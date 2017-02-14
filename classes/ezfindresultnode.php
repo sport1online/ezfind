@@ -10,9 +10,9 @@ class eZFindResultNode extends eZContentObjectTreeNode
     /*!
      \reimp
     */
-    function eZFindResultNode( $rows = array() )
+    public function __construct($rows = array() )
     {
-        $this->eZContentObjectTreeNode( $rows );
+        parent::__construct( $rows );
         if ( isset( $rows['id'] ) )
         {
             $this->ContentObjectID = $rows['id'];
@@ -32,7 +32,7 @@ class eZFindResultNode extends eZContentObjectTreeNode
     /*!
      \reimp
     */
-    function attribute( $attr, $noFunction = false )
+    public function attribute($attr, $noFunction = false )
     {
         $retVal = null;
 
@@ -83,7 +83,7 @@ class eZFindResultNode extends eZContentObjectTreeNode
     /*!
      \reimp
     */
-    function attributes()
+    public function attributes()
     {
         return array_merge( $this->LocalAttributeNameList,
                             eZContentObjectTreeNode::attributes() );
@@ -92,7 +92,7 @@ class eZFindResultNode extends eZContentObjectTreeNode
     /*!
      \reimp
     */
-    function hasAttribute( $attr )
+    public function hasAttribute($attr )
     {
         return ( in_array( $attr, $this->LocalAttributeNameList ) ||
                  eZContentObjectTreeNode::hasAttribute( $attr ) );
@@ -101,7 +101,7 @@ class eZFindResultNode extends eZContentObjectTreeNode
     /*!
      \reimp
     */
-    function setAttribute( $attr, $value )
+    public function setAttribute($attr, $value )
     {
         switch( $attr )
         {
@@ -125,10 +125,10 @@ class eZFindResultNode extends eZContentObjectTreeNode
     }
 
     /// Member vars
-    var $CurrentLanguage;
-    var $LocalAttributeValueList;
-    var $LocalAttributeNameList;
-    var $ResultObject;
+    public $CurrentLanguage;
+    public $LocalAttributeValueList;
+    public $LocalAttributeNameList;
+    public $ResultObject;
 }
 
 ?>

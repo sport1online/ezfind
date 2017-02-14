@@ -28,12 +28,6 @@ class ezfSolrStorage
     const STORAGE_VERSION_FORMAT = '1';
 
     /* var $handler; */
-
-    function  __construct( )
-    {
-
-    }
-
     /**
      * @param eZContentObjectAttribute $contentObjectAttribute the attribute to serialize
      * @return array for further processing

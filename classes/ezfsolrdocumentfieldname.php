@@ -13,13 +13,6 @@
 class ezfSolrDocumentFieldName
 {
     /**
-     *Constructor
-     */
-    function __construct()
-    {
-    }
-
-    /**
      * Lookup Solr schema field name. The lookup requires base name and
      * field type to generate the correct field name.
      *
@@ -101,14 +94,14 @@ class ezfSolrDocumentFieldName
      *
      * @return string Field name postfix.
      */
-    static function getPostFix( $fieldType )
+    public static function getPostFix($fieldType )
     {
         return '_' . self::$FieldTypeMap[$fieldType];
     }
 
     /// Member vars
-    static $LookupTable = null;
-    static $FieldTypeMap = array( 'int' => 'i',
+    public static $LookupTable = null;
+    public static $FieldTypeMap = array( 'int' => 'i',
                                   'float' => 'f',
                                   'double' => 'd',
                                   'sint' => 'si',
@@ -136,8 +129,8 @@ class ezfSolrDocumentFieldName
                                   'mtext' => 'mt',
                                   'texticu' => 'tu');
 
-    static $DefaultType = 'string';
-    static $PHPCreator = null;
+    public static $DefaultType = 'string';
+    public static $PHPCreator = null;
 
     const LOOKUP_FILENAME = 'ezfind_field_name.php';
     const LOOKUP_FILEDIR = 'ezfind';

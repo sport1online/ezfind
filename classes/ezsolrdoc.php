@@ -50,7 +50,7 @@ class eZSolrDoc
      *
      * @param int Document boost, optional
      */
-    function __construct( $boost = null )
+    public function __construct($boost = null )
     {
         if ( $boost !== null && is_numeric( $boost ))
         {
@@ -110,7 +110,7 @@ class eZSolrDoc
      *
      * @return string XML string.
      */
-    function docToXML()
+    public function docToXML()
     {
         $this->DomDoc = new DOMDocument( '1.0', 'utf-8' );
         $this->DomRootElement = $this->DomDoc->createElement( 'doc' );

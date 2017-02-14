@@ -10,7 +10,7 @@ class eZFindResultObject extends eZContentObject
     /*!
      \reimp
     */
-    function eZFindResultObject( $rows = array() )
+    public function __construct($rows = array() )
     {
         $this->LocalAttributeValueList = array();
         $this->LocalAttributeNameList = array( 'published' );
@@ -24,7 +24,7 @@ class eZFindResultObject extends eZContentObject
     /*!
      \reimp
     */
-    function attribute( $attr, $noFunction = false )
+    public function attribute($attr, $noFunction = false )
     {
         return isset( $this->LocalAttributeValueList[$attr] ) ?
                 $this->LocalAttributeValueList[$attr] : null;
@@ -33,7 +33,7 @@ class eZFindResultObject extends eZContentObject
     /*!
      \reimp
     */
-    function setAttribute( $attr, $value )
+    public function setAttribute($attr, $value )
     {
         if ( in_array( $attr, $this->LocalAttributeNameList ) )
         {
@@ -44,7 +44,7 @@ class eZFindResultObject extends eZContentObject
     /*!
      \reimp
     */
-    function attributes()
+    public function attributes()
     {
         return array_merge( $this->LocalAttributeNameList,
                             eZContentObject::attributes() );
@@ -53,7 +53,7 @@ class eZFindResultObject extends eZContentObject
     /*!
      \reimp
     */
-    function hasAttribute( $attr )
+    public function hasAttribute($attr )
     {
         return ( in_array( $attr, $this->LocalAttributeNameList ) ||
                  eZContentObject::hasAttribute( $attr ) );
@@ -61,8 +61,8 @@ class eZFindResultObject extends eZContentObject
 
 
     /// Object variables
-    var $LocalAttributeValueList;
-    var $LocalAttributeNameList;
+    public $LocalAttributeValueList;
+    public $LocalAttributeNameList;
 }
 
 ?>

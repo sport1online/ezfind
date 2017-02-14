@@ -20,12 +20,6 @@ class ezfSolrDocumentFieldGmapLocation extends ezfSolrDocumentFieldBase
 
     const DEFAULT_SUBATTRIBUTE = 'address';
 
-    function __construct( eZContentObjectAttribute $attribute )
-    {
-        parent::__construct( $attribute );
-    }
-
-
     public function getData()
     {
         $data = array();
@@ -93,7 +87,7 @@ class ezfSolrDocumentFieldGmapLocation extends ezfSolrDocumentFieldBase
         }
         return $subfields;
     }
-    static function getClassAttributeType( eZContentClassAttribute $classAttribute, $subAttribute = null, $context = 'search' )
+    public static function getClassAttributeType(eZContentClassAttribute $classAttribute, $subAttribute = null, $context = 'search' )
     {
         if ( $subAttribute and
              $subAttribute !== '' and
