@@ -26,7 +26,7 @@ class ezfSolrDocumentFieldBase
      *
      * @param eZContentObjectAttribute Instance of eZContentObjectAttribute
      */
-    function __construct( eZContentObjectAttribute $attribute )
+    public function __construct(eZContentObjectAttribute $attribute )
     {
         $this->ContentObjectAttribute = $attribute;
     }
@@ -169,7 +169,7 @@ class ezfSolrDocumentFieldBase
      *
      * @return string Field type. Null if no field type is defined.
      */
-    static function getClassAttributeType( eZContentClassAttribute $classAttribute, $subAttribute = null, $context = 'search' )
+    public static function getClassAttributeType(eZContentClassAttribute $classAttribute, $subAttribute = null, $context = 'search' )
     {
         // Subattribute-related behaviour here.
         $datatypeString = $classAttribute->attribute( 'data_type_string' );
@@ -250,7 +250,7 @@ class ezfSolrDocumentFieldBase
      *
      * @return string Field name.
      */
-    static function getCustomFieldName( eZContentClassAttribute $classAttribute, $subattribute = null )
+    public static function getCustomFieldName(eZContentClassAttribute $classAttribute, $subattribute = null )
     {
         return null;
     }
@@ -295,7 +295,7 @@ class ezfSolrDocumentFieldBase
      *
      * @return ezfSolrDocumentFieldBase Instance of ezfSolrDocumentFieldBase.
      */
-    static function getInstance( eZContentObjectAttribute $objectAttribute )
+    public static function getInstance(eZContentObjectAttribute $objectAttribute )
     {
         $datatypeString = $objectAttribute->attribute( 'data_type_string' );
 
@@ -327,7 +327,7 @@ class ezfSolrDocumentFieldBase
      *
      * @return moxed Processed value
      */
-    static function preProcessValue( $value, $fieldType )
+    public static function preProcessValue($value, $fieldType )
     {
         switch( $fieldType )
         {
@@ -370,7 +370,7 @@ class ezfSolrDocumentFieldBase
      *
      * @return string Solr datetime
      */
-    static function convertTimestampToDate( $timestamp )
+    public static function convertTimestampToDate($timestamp )
     {
         return gmstrftime( '%Y-%m-%dT%H:%M:%SZ', (int)$timestamp );
     }
@@ -480,8 +480,8 @@ class ezfSolrDocumentFieldBase
 
     /// Vars
     public $ContentObjectAttribute;
-    static $FindINI;
-    static $DocumentFieldName;
+    public static $FindINI;
+    public static $DocumentFieldName;
 
     /**
      * Registry storing singletons for the getInstance method.

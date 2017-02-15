@@ -22,9 +22,9 @@ class eZSolrBase
      * The solr search server URI
      * @var string
      */
-    var $SearchServerURI;
+    public $SearchServerURI;
 
-    var $SolrINI;
+    public $SolrINI;
 
     /**
      * Constructor.
@@ -32,7 +32,7 @@ class eZSolrBase
      *
      * @param string $baseURI An optional solr URI that overrides the INI one.
      */
-    function __construct( $baseURI = false )
+    public function __construct($baseURI = false )
     {
         // @todo Modify this code to adapt to the new URI parameters
         // Also keep BC with the previous settings
@@ -64,7 +64,7 @@ class eZSolrBase
 
      \return Complete HTTP get URL.
     */
-    function buildHTTPGetQuery( $request, $queryParams )
+    public function buildHTTPGetQuery($request, $queryParams )
     {
         foreach ( $queryParams as $name => $value )
         {
@@ -93,7 +93,7 @@ class eZSolrBase
 
      \return POST part of HTML request
      */
-	function buildPostString( $queryParams )
+	public function buildPostString($queryParams )
     {
         foreach ( $queryParams as $name => $value )
         {
@@ -136,7 +136,7 @@ class eZSolrBase
      *
      * @return Result of HTTP Request ( without HTTP headers )
      */
-    function getQuery( $request, $getParams )
+    public function getQuery($request, $getParams )
     {
         return $this->sendHTTPRequestRetry( eZSolrBase::buildHTTPGetQuery( $request, $getParams ) );
     }
@@ -151,7 +151,7 @@ class eZSolrBase
       \param $params is an array of post variables to include. The actual values
              are urlencoded in the buildPostString() call
      */
-    function rawSolrRequest ( $request = '', $params = array(), $wt = 'php' )
+    public function rawSolrRequest ($request = '', $params = array(), $wt = 'php' )
     {
         if ( count( $params ) == 0 && $request == '' )
         {
@@ -203,7 +203,7 @@ class eZSolrBase
      *
      * @return array The ping operation result
      */
-    function ping ( $wt = 'php' )
+    public function ping ($wt = 'php' )
     {
         return $this->rawSolrRequest ( '/admin/ping' );
     }
@@ -215,7 +215,7 @@ class eZSolrBase
      * @param boolean $softCommit if set/evaluates to true, will perform a soft commit
      *
      */
-    function commit( $softCommit = false )
+    public function commit($softCommit = false )
     {
         $commitElement = $softCommit ? '<commit softCommit="true" />' : '<commit/>' ;
         return $this->postQuery (  '/update', $commitElement, 'text/xml' );
@@ -226,7 +226,7 @@ class eZSolrBase
       for maximum performance.
       \param $withCommit means a commit is performed first
      */
-    function optimize( $withCommit = false )
+    public function optimize($withCommit = false )
     {
         if ( $withCommit == true )
         {
@@ -251,7 +251,7 @@ class eZSolrBase
      *
      * Function will check if solrResult document contains "<int name="status">0</int>"
      **/
-    static function validateUpdateResult ( $updateResult )
+    public static function validateUpdateResult ($updateResult )
     {
         if ( empty( $updateResult ) )
         {
@@ -299,7 +299,7 @@ class eZSolrBase
      * @param integer $commitWithin specifies within how many milliseconds a commit should occur if no other commit
      *       is triggered in the meantime (Solr 1.4, eZ Find 2.2)
      */
-    function addDocs ( $docs = array(), $commit = true, $optimize = false, $commitWithin = 0, $softCommit = false  )
+    public function addDocs ($docs = array(), $commit = true, $optimize = false, $commitWithin = 0, $softCommit = false  )
     {
         if ( !is_array( $docs ) )
         {
@@ -351,7 +351,7 @@ class eZSolrBase
      * @param integer $commitWithin specifies within how many milliseconds a commit should occur if no other commit
      * @return bool
      **/
-    function deleteDocs ( $docIDs = array(), $query = false, $commit = true,  $optimize = false, $commitWithin = 0 )
+    public function deleteDocs ($docIDs = array(), $query = false, $commit = true, $optimize = false, $commitWithin = 0 )
     {
         $postString = '<delete>';
 
@@ -396,7 +396,7 @@ class eZSolrBase
      * @param string $wt Query response writer
      * @return array The search results
      */
-    function rawSearch ( $params = array(), $wt = 'php' )
+    public function rawSearch ($params = array(), $wt = 'php' )
     {
         return $this->rawSolrRequest ( '/select' , $params, $wt );
     }
@@ -412,7 +412,7 @@ class eZSolrBase
      * @return bool
      * @see rawSearch()
      */
-    function pushElevateConfiguration( $params )
+    public function pushElevateConfiguration($params )
     {
         return $this->rawSearch( $params );
     }
@@ -480,7 +480,7 @@ class eZSolrBase
      *                          If curl is available, this exception will also be thrown, with its error number and message
      * @return HTTP result ( without headers ), false if the request fails.
      */
-    function sendHTTPRequest( $url, $postData = false, $contentType = self::DEFAULT_REQUEST_CONTENTTYPE, $userAgent = self::DEFAULT_REQUEST_USERAGENT )
+    public function sendHTTPRequest($url, $postData = false, $contentType = self::DEFAULT_REQUEST_CONTENTTYPE, $userAgent = self::DEFAULT_REQUEST_USERAGENT )
     {
         $connectionTimeout = $this->SolrINI->variable( 'SolrBase', 'ConnectionTimeout' );
         $processTimeout = $this->SolrINI->variable( 'SolrBase', 'ProcessTimeout' );

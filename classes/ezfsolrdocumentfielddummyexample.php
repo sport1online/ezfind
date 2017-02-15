@@ -66,14 +66,6 @@ class ezfSolrDocumentFieldDummyExample extends ezfSolrDocumentFieldBase
     const DEFAULT_SUBATTRIBUTE = 'subattribute2';
 
     /**
-     * @see ezfSolrDocumentFieldBase::__construct()
-     */
-    function __construct( eZContentObjectAttribute $attribute )
-    {
-        parent::__construct( $attribute );
-    }
-
-    /**
      * @see ezfSolrDocumentFieldBase::getData()
      */
     public function getData()
@@ -142,7 +134,7 @@ class ezfSolrDocumentFieldDummyExample extends ezfSolrDocumentFieldBase
     /**
      * @see ezfSolrDocumentFieldBase::getClassAttributeType()
      */
-    static function getClassAttributeType( eZContentClassAttribute $classAttribute, $subAttribute = null, $context = 'search' )
+    public static function getClassAttributeType(eZContentClassAttribute $classAttribute, $subAttribute = null, $context = 'search' )
     {
         if ( $subAttribute and
              $subAttribute !== '' and

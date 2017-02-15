@@ -14,7 +14,7 @@ class ezfeZPSolrQueryBuilder
      * @param Object $searchPluginInstance Search engine instance. Allows the query builder to
      *        communicate with the caller ( eZSolr instance ).
      */
-    function ezfeZPSolrQueryBuilder( $searchPluginInstance )
+    public function __construct($searchPluginInstance )
     {
         $this->searchPluginInstance = $searchPluginInstance;
     }
@@ -1072,7 +1072,7 @@ class ezfeZPSolrQueryBuilder
      * @return string String with quotes added if needed.
      * @deprecated
      */
-    static function quoteIfNeeded( $value )
+    public static function quoteIfNeeded($value )
     {
         $quote = '';
         if ( strpos( $value, ' ' ) !== false )
@@ -1853,9 +1853,9 @@ class ezfeZPSolrQueryBuilder
     }
 
     /// Vars
-    static $FindINI;
-    static $SolrINI;
-    static $SiteINI;
+    public static $FindINI;
+    public static $SolrINI;
+    public static $SiteINI;
 
     /**
      * Array containing the allowed boolean operators for the 'fq' parameter

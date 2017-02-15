@@ -205,7 +205,7 @@ class ezfSolrDocumentFieldObjectRelation extends ezfSolrDocumentFieldBase
      *
      * @todo Implement specific behaviour and context aware typing
      */
-    static function getClassAttributeType( eZContentClassAttribute $classAttribute, $subAttribute = null, $context = 'search' )
+    public static function getClassAttributeType(eZContentClassAttribute $classAttribute, $subAttribute = null, $context = 'search' )
     {
         if ( $subAttribute and
              $subAttribute !== '' and
@@ -339,7 +339,7 @@ class ezfSolrDocumentFieldObjectRelation extends ezfSolrDocumentFieldBase
      *
      * @return array List of ezfSolrDocumentFieldBase instances.
      */
-    function getBaseList( eZContentObjectVersion $objectVersion )
+    public function getBaseList(eZContentObjectVersion $objectVersion )
     {
         $returnList = array();
         // Get ezfSolrDocumentFieldBase instance for all attributes in related object
