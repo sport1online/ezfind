@@ -17,7 +17,7 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "sport1online/ezpublish-legacy-installer": "v2016.*"
+        "ezsystems/ezpublish-legacy-installer": "*"
     },
     "extra": {
         "ezpublish-legacy-extension-name": "ezfind"
