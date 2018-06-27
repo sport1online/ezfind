@@ -9,12 +9,6 @@
             "homepage": "https://github.com/ezsystems/ezfind/contributors"
         }
     ],
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/sport1online/ezpublish-legacy-installer"
-        }
-    ],
     "minimum-stability": "dev",
     "require": {
         "ezsystems/ezpublish-legacy-installer": "*"
